@@ -3,6 +3,15 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:ui';
 //import 'package:geolocator/geolocator.dart';
 
+/*TODOS
+
+User Device Location
+
+StreamBuilder
+
+*/
+
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
@@ -39,11 +48,14 @@ class _MyAppState extends State<MyApp> {
   }
   late GoogleMapController mapController;
 
+  //fake user location
+
   final LatLng _center = const LatLng(47.620422, -122.349358);
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
     setState(() {
+      // Fetch Data and build list of events
       _listMk.add(
           Marker(
             markerId: const MarkerId('Self'),
