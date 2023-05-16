@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'models/map_marker_model.dart';
+import 'components/event_widget.dart';
 import 'dart:ui';
 //import 'package:geolocator/geolocator.dart';
 
@@ -53,30 +55,101 @@ class ProfilePage extends StatelessWidget {
     return MaterialApp(
         title: 'Profile',
         home: Scaffold(
-          appBar: AppBar(leading: IconButton(onPressed: ()=>{Navigator.pop(context)},icon: const Icon(Icons.arrow_back))),
+            appBar: AppBar(
+                leading: IconButton(
+                    onPressed: () => {Navigator.pop(context)},
+                    icon: const Icon(Icons.arrow_back))),
             body: ListView(
-          children: <Widget>[
-            Container(
-                height: 100,
-                decoration: BoxDecoration(),
-                child: const Icon(size: 50, Icons.account_circle_outlined)),
-            Container(
-              height: 100,
-              decoration: BoxDecoration(),
-              child: userInfo('username'),
-            ),
-            Container(
-              height: 100,
-              decoration: BoxDecoration(),
-              child: userInfo('email'),
-            ),
-            Container(
-              height: 100,
-              decoration: BoxDecoration(),
-              child: userInfo('password'),
-            ),
-          ],
-        )));
+              children: <Widget>[
+                Container(
+                    height: 100,
+                    decoration: BoxDecoration(),
+                    child: const Icon(size: 50, Icons.account_circle_outlined)),
+                Container(
+                  height: 100,
+                  decoration: BoxDecoration(),
+                  child: userInfo('username'),
+                ),
+                Container(
+                  height: 100,
+                  decoration: BoxDecoration(),
+                  child: userInfo('email'),
+                ),
+                Container(
+                  height: 100,
+                  decoration: BoxDecoration(),
+                  child: userInfo('password'),
+                ),
+                Container(
+                    height: 60,
+                    decoration: BoxDecoration(),
+                    child: TextButton(
+                      style: ButtonStyle(
+                          maximumSize:
+                              MaterialStateProperty.all(const Size(70, 50))),
+                      onPressed: () {},
+                      child: Container(
+                        //color: Colors.green,
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 10),
+                        child: const Text(
+                          'Edit',
+                          style: TextStyle(color: Colors.black, fontSize: 13.0),
+                        ),
+                      ),
+                    )),
+                Container(
+                    height: 60,
+                    decoration: BoxDecoration(),
+                    child: TextButton(
+                      style: ButtonStyle(
+                          maximumSize:
+                              MaterialStateProperty.all(const Size(70, 50))),
+                      onPressed: () {},
+                      child: Container(
+                        //color: Colors.green,
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 10),
+                        child: const Text(
+                          'Log Out',
+                          style: TextStyle(color: Colors.black, fontSize: 13.0),
+                        ),
+                      ),
+                    )),
+                Container(
+                    height: 60,
+                    decoration: BoxDecoration(color: Colors.red[200]),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
+                        child: const Text(
+                          'Delete Account',
+                          style: TextStyle(color: Colors.black, fontSize: 13.0),
+                        ),
+                      ),
+                    )),
+              ],
+            )));
+  }
+}
+
+class EventPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'Events',
+        home: Scaffold(
+            appBar: AppBar(
+                leading: IconButton(
+                    onPressed: () => {Navigator.pushNamed(context, '/')},
+                    icon: const Icon(Icons.arrow_back))),
+            body: Column(
+              children: <Widget>[
+                for (var event in mapMarkers)
+                 EventWidget(mapMarker: event,)],
+            )));
   }
 }
 
@@ -103,32 +176,32 @@ class MapPage extends StatelessWidget {
               onPressed: () => Navigator.pushNamed(context, '/profile-page'),
               icon: const Icon(Icons.account_circle_rounded)),
           actions: <Widget>[
-            IconButton(onPressed: () {}, icon: const Icon(Icons.attractions))
+            IconButton(
+                onPressed: () =>
+                    Navigator.popAndPushNamed(context, '/event-page'),
+                icon: const Icon(Icons.attractions))
           ],
         ),
         body: GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 17.0,
-          ),
-          markers: {
-           Marker(
-            markerId: const MarkerId("marker1"),
-            position: _center,
-          ),
-          Marker(
-            markerId: const MarkerId("marker2"),
-            position: const LatLng(47.620, -122.350),
-            icon: BitmapDescriptor.defaultMarkerWithHue(60)
-          ),
-          Marker(
-            markerId: const MarkerId("marker3"),
-            position: const LatLng(47.619, -122.3478),
-            icon: BitmapDescriptor.defaultMarkerWithHue(60)
-          ),
-        
-        }));
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: CameraPosition(
+              target: _center,
+              zoom: 17.0,
+            ),
+            markers: {
+              Marker(
+                markerId: const MarkerId("marker1"),
+                position: _center,
+              ),
+              Marker(
+                  markerId: const MarkerId("marker2"),
+                  position: const LatLng(47.620, -122.350),
+                  icon: BitmapDescriptor.defaultMarkerWithHue(60)),
+              Marker(
+                  markerId: const MarkerId("marker3"),
+                  position: const LatLng(47.619, -122.3478),
+                  icon: BitmapDescriptor.defaultMarkerWithHue(60)),
+            }));
   }
 }
 
@@ -188,7 +261,9 @@ class _MyAppState extends State<MyApp> {
               onPressed: () => Navigator.pushNamed(context, '/profile-page'),
               icon: const Icon(Icons.account_circle_rounded)),
           actions: <Widget>[
-            IconButton(onPressed: () {}, icon: const Icon(Icons.attractions))
+            IconButton(
+                onPressed: () => Navigator.pushNamed(context, '/event-page'),
+                icon: const Icon(Icons.attractions))
           ],
         ),
         body: GoogleMap(
@@ -232,6 +307,7 @@ class App extends State<MyApp> {
         //initialRoute: '/profile-page',
         routes: {
           '/profile-page': (BuildContext context) => ProfilePage(),
+          '/event-page': (BuildContext context) => EventPage(),
         },
         theme: ThemeData(
           useMaterial3: true,

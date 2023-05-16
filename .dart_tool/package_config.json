@@ -134,10 +134,22 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///Users/jc/.pub-cache/hosted/pub.dev/intl-0.18.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "js",
       "rootUri": "file:///Users/jc/.pub-cache/hosted/pub.dev/js-0.6.5",
       "packageUri": "lib/",
       "languageVersion": "2.16"
+    },
+    {
+      "name": "latlong2",
+      "rootUri": "file:///Users/jc/.pub-cache/hosted/pub.dev/latlong2-0.8.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "lints",
@@ -236,7 +248,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-04-19T23:29:25.853344Z",
+  "generated": "2023-05-16T03:12:56.028640Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }
