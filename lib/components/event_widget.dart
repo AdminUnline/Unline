@@ -19,7 +19,7 @@ class _EventWidgetState extends State<EventWidget> {
     return Container(
         width: 400,
         height: 149,
-        margin:  const EdgeInsets.fromLTRB(10,10,10,0),
+        margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         decoration: BoxDecoration(),
         child: Stack(children: <Widget>[
           Positioned(
@@ -41,7 +41,7 @@ class _EventWidgetState extends State<EventWidget> {
               top: 60,
               left: 56,
               child: Text(
-                 widget.mapMarker!.title ?? '',
+                widget.mapMarker!.title ?? '',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     color: Color.fromRGBO(255, 255, 255, 1),
@@ -53,17 +53,22 @@ class _EventWidgetState extends State<EventWidget> {
                     height: 1),
               )),
           Positioned(
-              top: 122,
-              left: 86,
+              top: 103,
+              left: 70,
               child: Container(
-                  width: 16,
-                  height: 13.47368335723877,
+                  width: 160,
+                  height: 160.47368335723877,
                   child: Stack(children: <Widget>[
-                    Positioned(top: 0, left: 0, child: Text('')),
                     Positioned(
-                        top: 6.736843109130859,
-                        left: 2.9473648071289062,
-                        child: Text('')),
+                        top: 0,
+                        left: 0,
+                        child: IconButton(
+                            style: ButtonStyle(),
+                            onPressed: () => {},
+                            icon: const Icon(
+                                color: Color.fromARGB(255, 245, 241, 241),
+                                size: 20,
+                                Icons.send))),
                   ]))),
           Positioned(
               top: 9,
@@ -73,7 +78,7 @@ class _EventWidgetState extends State<EventWidget> {
                   height: 41,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/Ellipse11.png'),
+                        image: AssetImage('assets/bluedot.png'),
                         fit: BoxFit.fitWidth),
                     borderRadius: BorderRadius.all(
                         Radius.elliptical(40.88595199584961, 41)),
@@ -127,7 +132,7 @@ class _EventWidgetState extends State<EventWidget> {
               top: 29,
               left: 74,
               child: Text(
-                 widget.mapMarker!.title ?? '',
+                widget.mapMarker!.title ?? '',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     color: Color.fromRGBO(255, 255, 255, 1),
@@ -139,13 +144,22 @@ class _EventWidgetState extends State<EventWidget> {
                     height: 1),
               )),
           Positioned(
-              top: 121,
-              left: 34,
+              top: 104,
+              left: 20,
               child: Container(
-                  width: 16,
-                  height: 16,
+                  width: 160,
+                  height: 160,
                   child: Stack(children: <Widget>[
-                    Positioned(top: 0, left: 0, child: Text('')),
+                    Positioned(
+                        top: 0,
+                        left: 0,
+                        child: IconButton(
+                            style: ButtonStyle(),
+                            onPressed: () => {},
+                            icon: const Icon(
+                                color: Color.fromARGB(255, 245, 241, 241),
+                                size: 20,
+                                Icons.message))),
                   ]))),
         ]));
   }
