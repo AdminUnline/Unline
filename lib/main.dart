@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:mvp/pages/signin_page.dart';
 import 'models/map_marker_model.dart';
 import 'components/event_widget.dart';
+import 'pages/profile_page.dart';
 import 'dart:ui';
 //import 'package:geolocator/geolocator.dart';
 
@@ -22,118 +24,6 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => App();
 }
 
-class ProfilePage extends StatelessWidget {
-  @override
-  Widget userInfo(String title) => Padding(
-      padding: const EdgeInsets.only(bottom: 10, left: 50),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-              color: Colors.grey,
-            ),
-          ),
-          Container(
-            width: 350,
-            height: 40,
-            decoration: const BoxDecoration(
-                border: Border(
-                    bottom: BorderSide(
-              color: Colors.grey,
-              width: 1,
-            ))),
-            child:
-                Expanded(child: TextButton(onPressed: () {}, child: Text(''))),
-          )
-        ],
-      ));
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Profile',
-        home: Scaffold(
-            appBar: AppBar(
-                leading: IconButton(
-                    onPressed: () => {Navigator.pop(context)},
-                    icon: const Icon(Icons.arrow_back))),
-            body: ListView(
-              children: <Widget>[
-                Container(
-                    height: 100,
-                    decoration: BoxDecoration(),
-                    child: const Icon(size: 50, Icons.account_circle_outlined)),
-                Container(
-                  height: 100,
-                  decoration: BoxDecoration(),
-                  child: userInfo('username'),
-                ),
-                Container(
-                  height: 100,
-                  decoration: BoxDecoration(),
-                  child: userInfo('email'),
-                ),
-                Container(
-                  height: 100,
-                  decoration: BoxDecoration(),
-                  child: userInfo('password'),
-                ),
-                Container(
-                    height: 60,
-                    decoration: BoxDecoration(),
-                    child: TextButton(
-                      style: ButtonStyle(
-                          maximumSize:
-                              MaterialStateProperty.all(const Size(70, 50))),
-                      onPressed: () {},
-                      child: Container(
-                        //color: Colors.green,
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 10),
-                        child: const Text(
-                          'Edit',
-                          style: TextStyle(color: Colors.black, fontSize: 13.0),
-                        ),
-                      ),
-                    )),
-                Container(
-                    height: 60,
-                    decoration: BoxDecoration(),
-                    child: TextButton(
-                      style: ButtonStyle(
-                          maximumSize:
-                              MaterialStateProperty.all(const Size(70, 50))),
-                      onPressed: () {},
-                      child: Container(
-                        //color: Colors.green,
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 10),
-                        child: const Text(
-                          'Log Out',
-                          style: TextStyle(color: Colors.black, fontSize: 13.0),
-                        ),
-                      ),
-                    )),
-                Container(
-                    height: 60,
-                    decoration: BoxDecoration(color: Colors.red[200]),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 10),
-                        child: const Text(
-                          'Delete Account',
-                          style: TextStyle(color: Colors.black, fontSize: 13.0),
-                        ),
-                      ),
-                    )),
-              ],
-            )));
-  }
-}
 
 class EventPage extends StatelessWidget {
   @override
@@ -304,10 +194,10 @@ class App extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        //initialRoute: '/profile-page',
         routes: {
           '/profile-page': (BuildContext context) => ProfilePage(),
           '/event-page': (BuildContext context) => EventPage(),
+          '/signin-page': (BuildContext context) => SignInPage(),
         },
         theme: ThemeData(
           useMaterial3: true,

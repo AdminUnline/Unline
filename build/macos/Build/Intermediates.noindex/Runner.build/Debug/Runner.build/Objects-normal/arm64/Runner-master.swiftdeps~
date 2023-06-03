@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
+options: "fa399887cab77bcffe4db9ef3659f48653429228347ed01310e4cb7685021c27"
+build_start_time: [1685051270, 841544000]
+build_end_time: [1685051270, 897004000]
+inputs:
+  "/Users/jc/Documents/GitHub/Unline/macos/Flutter/GeneratedPluginRegistrant.swift": !private [1685051252, 469943493]
+  "/Users/jc/Documents/GitHub/Unline/macos/Runner/AppDelegate.swift": !private [1681757951, 396972308]
+  "/Users/jc/Documents/GitHub/Unline/macos/Runner/MainFlutterWindow.swift": !private [1681757951, 399663421]
