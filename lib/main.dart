@@ -5,6 +5,7 @@ import 'models/map_marker_model.dart';
 import 'components/event_widget.dart';
 import 'pages/profile_page.dart';
 import 'dart:ui';
+import 'package:mvp/pages/map_page.dart';
 //import 'package:geolocator/geolocator.dart';
 
 /*TODOS
@@ -43,7 +44,9 @@ class EventPage extends StatelessWidget {
   }
 }
 
-class MapPage extends StatelessWidget {
+
+
+class OldMapPage extends StatelessWidget {
   @override
   late GoogleMapController mapController;
 
