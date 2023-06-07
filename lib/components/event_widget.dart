@@ -17,7 +17,7 @@ class _EventWidgetState extends State<EventWidget> {
     // Figma Flutter Generator EventWidget - GROUP
 
     return Container(
-        width: 400,
+        width: MediaQuery.of(context).size.width,
         height: 149,
         margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         decoration: BoxDecoration(),
@@ -26,7 +26,7 @@ class _EventWidgetState extends State<EventWidget> {
               top: 0,
               left: 0,
               child: Container(
-                  width: 400,
+                  width: MediaQuery.of(context).size.width,
                   height: 149,
                   decoration: BoxDecoration(
                     boxShadow: [
@@ -41,7 +41,7 @@ class _EventWidgetState extends State<EventWidget> {
               top: 60,
               left: 56,
               child: Text(
-                widget.mapMarker!.title ?? '',
+                widget.mapMarker!.event ?? '',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     color: Color.fromRGBO(255, 255, 255, 1),
@@ -87,7 +87,7 @@ class _EventWidgetState extends State<EventWidget> {
               top: 11,
               left: 74,
               child: Text(
-                'You',
+                widget.mapMarker!.user ?? 'You',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     color: Color.fromRGBO(255, 255, 255, 1),
@@ -132,7 +132,7 @@ class _EventWidgetState extends State<EventWidget> {
               top: 29,
               left: 74,
               child: Text(
-                widget.mapMarker!.title ?? '',
+                widget.mapMarker!.timestamp ?? '',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     color: Color.fromRGBO(255, 255, 255, 1),
